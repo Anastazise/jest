@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% load static %}
+<div class="navbar">
+    <div class="menubar">
+        <a href="/" class="navbar_item">
+            БЛОГ
+        </a>
+        <a href="/useful_links" class="navbar_item">
+            ПОЛЕЗНЫЕ РЕСУРСЫ
+        </a>
+        <a href="/about" class="navbar_item">
+            О САЙТЕ
+        </a>
+        <a href="/pool" class="navbar_item">
+            ОБРАТНАЯ СВЯЗЬ
+        </a>
+        <a href="{% url 'user-profile' request.user.id %}" class="navbar_item">
+            {{request.user.username|upper}}
+        </a>
+        <a href="/video" class="navbar_item">
+            ВИДЕО
+        </a>
+    </div>
+    
+    <div class="user_field">
+        {% if request.user.is_authenticated %}
+        <div class="username_label">
+            {{request.user}}
+        </div>
+        <div>
+            <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+        </div>
+            {% else %}
+        <div>
+            <a href="{% url 'login' %}">Войти</a>
+        </div>
+            {% endif %}
+    </div>
+    <a href="/shop/" class="logo">
+        <img src="{% static 'images/logo.png' %}">
+    </a>
+</div>

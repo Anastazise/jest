@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+
+<div class="desc_container">
+    <a>
+        Блог-сайт на тему кошек
+    </a>
+    <img src="{% static 'images/cat.png' %}">
+    <a>
+        Также вам могут быть следующие <a class="link_text" href="./links.html">ссылки</a>
+    </a>
+</div>
+
+{% endblock %}
